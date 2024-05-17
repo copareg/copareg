@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("Traffic Anomaly Detection").getOrCreate()
 
 # Read network traffic data as DataFrame
-df = spark.read.csv("path/to/your/data.csv")
+df = spark.read.csv("ip.dat")
 
 # Define thresholds for anomaly detection
 high_bytes_threshold = 4096
