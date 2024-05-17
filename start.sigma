@@ -1,0 +1,16 @@
+rule: High_Bytes_Short_Duration
+
+description: Detects network traffic with a high number of bytes transferred 
+             in a short duration, potentially indicating an anomaly.
+
+trigger:
+  # Select events where bytes transferred are high
+  network traffic where bytes_transferred > 4096
+
+condition:
+  # Ensure the duration is very short
+  duration_ms < 100
+
+output:
+  message: High byte transfer detected from source {{source_ip}} to destination {{destination_ip}}
+          (bytes={{bytes_transferred}}) within a very short duration ({{duration_ms}}ms)
